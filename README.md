@@ -2,6 +2,19 @@
 
 Решение тестового задания на позицию «Технический специалист / вайбкодер».
 
+## Как смотреть (без запуска)
+
+На GitHub **нет живого сайта** — только код. Смотреть так:
+
+1. **Скриншоты UI** → папка [`screenshots/`](./screenshots/)  
+   (`companies-all.png`, `companies-search.png`, `companies-city.png`)
+2. **Ответы задачи 4** → [`TASK4.md`](./TASK4.md)
+3. **Аномалии в review.csv** → [`ANOMALIES.md`](./ANOMALIES.md)
+4. **Как проверял** → [`PROOF.md`](./PROOF.md)
+5. **SQL из задания** → [`queries.sql`](./queries.sql)
+
+Живую таблицу `/companies` увидите только после запуска ниже (Docker + `npm run dev`).
+
 ## Что внутри
 
 | Задача | Результат |
