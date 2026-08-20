@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+build
+dist
+
+# env
+.env
+.env.local
+.env*.local
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# os / ide
+.DS_Store
+.idea
+.vscode
+
+# docker
+polza_pg_data

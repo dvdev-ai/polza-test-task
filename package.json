@@ -1,0 +1,28 @@
+{
+  "name": "polza-companies",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:load": "python3 scripts/load_companies.py && python3 scripts/load_reviews.py",
+    "db:queries": "docker exec -i polza-companies-db psql -U polza -d companies < queries.sql"
+  },
+  "dependencies": {
+    "next": "15.1.0",
+    "pg": "^8.13.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5.7.2"
+  }
+}

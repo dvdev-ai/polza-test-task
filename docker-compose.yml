@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: polza-companies-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: polza
+      POSTGRES_PASSWORD: polza
+      POSTGRES_DB: companies
+    ports:
+      - "5433:5432"
+    volumes:
+      - polza_pg_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U polza -d companies"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  polza_pg_data:
