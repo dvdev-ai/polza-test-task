@@ -15,6 +15,31 @@
 
 Живую таблицу `/companies` увидите только после запуска ниже (Docker + `npm run dev`).
 
+## Как запустить у себя
+
+Нужны: Docker, Node.js, Python 3.
+
+```bash
+cd ~/Downloads/polza-test-task
+docker compose up -d
+cp .env.example .env.local
+python3 -m pip install psycopg2-binary
+python3 scripts/load_companies.py
+python3 scripts/load_reviews.py
+npm install
+npm run dev
+```
+
+Если репозиторий клонировали в другое место — подставьте свой путь вместо `~/Downloads/polza-test-task`.
+
+Откройте в браузере: [http://localhost:3000/companies](http://localhost:3000/companies)
+
+Опционально — три SQL из задания:
+
+```bash
+docker exec -i polza-companies-db psql -U polza -d companies < queries.sql
+```
+
 ## Что внутри
 
 | Задача | Результат |
@@ -23,30 +48,6 @@
 | 2. Next.js `/companies` | App Router + Server Components, поиск и фильтр |
 | 3. `review.csv` | `scripts/load_reviews.py`, `ANOMALIES.md` |
 | 4. Вайбкод/LLM | `TASK4.md` (своими словами) |
-
-## Быстрый старт
-
-```bash
-# 1) Postgres
-docker compose up -d
-
-# 2) Загрузка JSON (дедуп по external_id)
-python3 -m pip install psycopg2-binary
-cp .env.example .env.local
-python3 scripts/load_companies.py
-
-# 3) Проверка review.csv + merge валидных строк
-python3 scripts/load_reviews.py
-
-# 4) SQL из задания
-docker exec -i polza-companies-db psql -U polza -d companies < queries.sql
-
-# 5) UI
-npm install
-npm run dev
-```
-
-Откройте [http://localhost:3000/companies](http://localhost:3000/companies).
 
 ## Переменные окружения
 
